@@ -17,7 +17,7 @@ RUN curl https://downloads.getmonero.org/monero.linux.x64.v0-10-0-0.tar.bz2 -O &
 # blockchain loaction
 VOLUME /root/.bitmonero
 
-EXPOSE 18081
+EXPOSE 18080 18081
 
 ENTRYPOINT ["./monerod"]
 CMD ["--restricted-rpc", "--rpc-bind-ip=0.0.0.0"]
