@@ -8,11 +8,11 @@ RUN apt-get update && apt-get install -y curl bzip2
 # WORKDIR /home/monero
 WORKDIR /root
 
-RUN curl https://downloads.getmonero.org/cli/monero-linux-x64-v0.10.3.0.tar.bz2 -O &&\
-  echo 'f164112bea75dfd3eaaa905d21129820a996bbe6e5d65cb194609c672a71c3fe  monero-linux-x64-v0.10.3.0.tar.bz2' | sha256sum -c - &&\
-  tar -xjvf monero-linux-x64-v0.10.3.0.tar.bz2 &&\
-  rm monero-linux-x64-v0.10.3.0.tar.bz2 &&\
-  cp ./monero-v0.10.3.0/monerod . &&\
+RUN curl https://downloads.getmonero.org/cli/monero-linux-x64-v0.10.3.1.tar.bz2 -O &&\
+  echo '8db80f8cc4f80d4106db807432828df730a59eac78972ea81652aa6b9bac04ad  monero-linux-x64-v0.10.3.1.tar.bz2' | sha256sum -c - &&\
+  tar -xjvf monero-linux-x64-v0.10.3.1.tar.bz2 &&\
+  rm monero-linux-x64-v0.10.3.1.tar.bz2 &&\
+  cp ./monero-v0.10.3.1/monerod . &&\
   rm -r monero-*
 
 # blockchain loaction
