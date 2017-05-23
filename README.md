@@ -10,7 +10,7 @@ Build with
 
 Run with
 
-```./start-container.sh```
+```docker run -p 18080:18080 -p 18081:18081 --restart=always -v ~/.bitmonero:/home/monerod/.bitmonero --name=monerod -td monerod:latest```
 
 View logs with
 
