@@ -1,22 +1,28 @@
-# Usage: docker run --restart=always -v /var/data/blockchain-xmr:/root/.bitmonero --network=host --name=monerod -td kannix/monero-full-node
-FROM ubuntu:latest
+FROM debian:stretch-slim
 
-RUN apt-get update && apt-get install -y curl bzip2
+ENV MONERO_VERSION 0.11.1.0
+ENV MONERO_SHA256 6581506f8a030d8d50b38744ba7144f2765c9028d18d990beb316e13655ab248
 
-# RUN useradd -ms /bin/bash monero
-# USER monero
-# WORKDIR /home/monero
-WORKDIR /root
+RUN set -ex \
+	&& apt-get update \
+	&& apt-get install -qq --no-install-recommends curl bzip2 ca-certificates \
+	&& rm -rf /var/lib/apt/lists/*
 
-RUN curl https://downloads.getmonero.org/cli/monero-linux-x64-v0.10.3.1.tar.bz2 -O &&\
-  echo '8db80f8cc4f80d4106db807432828df730a59eac78972ea81652aa6b9bac04ad  monero-linux-x64-v0.10.3.1.tar.bz2' | sha256sum -c - &&\
-  tar -xjvf monero-linux-x64-v0.10.3.1.tar.bz2 &&\
-  rm monero-linux-x64-v0.10.3.1.tar.bz2 &&\
-  cp ./monero-v0.10.3.1/monerod . &&\
+RUN groupadd -r monero && useradd -r -m -g monero monero
+
+USER monero
+ENV HOME /home/monero
+WORKDIR /home/monero
+
+RUN curl https://downloads.getmonero.org/cli/monero-linux-x64-v$MONERO_VERSION.tar.bz2 -O &&\
+  echo "$MONERO_SHA256 monero-linux-x64-v$MONERO_VERSION.tar.bz2" | sha256sum -c - &&\
+  tar -xjvf monero-linux-x64-v$MONERO_VERSION.tar.bz2 &&\
+  rm monero-linux-x64-v$MONERO_VERSION.tar.bz2 &&\
+  cp ./monero-v$MONERO_VERSION/monerod . &&\
   rm -r monero-*
 
 # blockchain loaction
-VOLUME /root/.bitmonero
+VOLUME /home/monerod/.bitmonero
 
 EXPOSE 18080 18081
 
