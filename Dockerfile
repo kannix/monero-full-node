@@ -1,5 +1,5 @@
 # Usage: docker run --restart=always -v /var/data/blockchain-xmr:/root/.bitmonero --network=host --name=monerod -td kannix/monero-full-node
-FROM ubuntu:latest
+FROM debian:9
 
 RUN apt-get update && apt-get install -y curl bzip2
 
