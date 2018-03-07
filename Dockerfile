@@ -1,4 +1,4 @@
-# Usage: docker run --restart=always -v /var/data/blockchain-xmr:/root/.bitmonero --network=host --name=monerod -td kannix/monero-full-node
+# Usage: docker run --restart=always -v /var/data/blockchain-xmr:/root/.bitmonero -p 18080:18080 -p 18081:18081 --name=monerod -td kannix/monero-full-node
 FROM ubuntu:16.04
 
 ENV MONERO_VERSION=0.11.1.0 MONERO_SHA256=6581506f8a030d8d50b38744ba7144f2765c9028d18d990beb316e13655ab248
