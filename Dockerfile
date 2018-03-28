@@ -1,7 +1,7 @@
 # Usage: docker run --restart=always -v /var/data/blockchain-xmr:/root/.bitmonero -p 18080:18080 -p 18081:18081 --name=monerod -td kannix/monero-full-node
 FROM ubuntu:16.04
 
-ENV MONERO_VERSION=0.11.1.0 MONERO_SHA256=6581506f8a030d8d50b38744ba7144f2765c9028d18d990beb316e13655ab248
+ENV MONERO_VERSION=0.12.0.0 MONERO_SHA256=928ad08ff0dea2790c7777a70e610b2d33c35a5df5900fbb050cc8c659237636
 
 RUN apt-get update && apt-get install -y curl bzip2
 
@@ -23,4 +23,4 @@ VOLUME /root/.bitmonero
 EXPOSE 18080 18081
 
 ENTRYPOINT ["./monerod"]
-CMD ["--fluffy-blocks", "--restricted-rpc", "--rpc-bind-ip=0.0.0.0", "--confirm-external-bind"]
+CMD ["--restricted-rpc", "--rpc-bind-ip=0.0.0.0", "--confirm-external-bind"]
