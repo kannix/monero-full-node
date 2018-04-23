@@ -1,0 +1,23 @@
+version: "2"
+
+services:
+
+# monero-node ---------------------------------------------------------
+    monero-node:
+        image: kannix/monero-full-node
+        container_name: monero-node
+        restart: always
+        volumes:
+            - /opt/docker/monero/blockchain:/root/.bitmonero
+        ports:
+            - 18080:18080
+            - 18081:18081
+        network_mode: "host" 
+        logging:
+            driver: json-file
+            options: 
+                max-size: "20k"
+
+# volumes -------------------------------------------------------------
+volumes:
+    monero-node:
