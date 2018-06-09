@@ -21,7 +21,7 @@ docker stop monerod
 docker rm monerod
 docker pull kannix/monero-full-node
 ```
-Then launch the using the command above
+Then launch using the "how to use" command above
 
 Automatic way
 https://github.com/v2tec/watchtower
