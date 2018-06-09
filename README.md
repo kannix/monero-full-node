@@ -5,7 +5,7 @@ docker image to run a monero full network node
 ## How To Use
 
 ``` 
-docker run -td
+docker run -td \
 --restart=always \
 -v /var/data/blockchain-xmr:/root/.bitmonero \
 -p 18080:18080 \
