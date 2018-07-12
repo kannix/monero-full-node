@@ -1,7 +1,7 @@
 # Usage: docker run --restart=always -v /var/data/blockchain-xmr:/root/.bitmonero -p 18080:18080 -p 18081:18081 --name=monerod -td kannix/monero-full-node
 FROM ubuntu:16.04
 
-ENV MONERO_VERSION=0.12.2.0 MONERO_SHA256=cb97e3f8b700a81e1b0f1a77509eefbfb415aa6013f23685f8933b559309c580
+ENV MONERO_VERSION=0.12.3.0 MONERO_SHA256=72fe937aa2832a0079767914c27671436768ff3c486597c3353a8567d9547487
 
 RUN apt-get update && apt-get install -y curl bzip2 libpcsclite-dev
 
