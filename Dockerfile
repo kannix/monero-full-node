@@ -28,4 +28,4 @@ VOLUME /home/monero/.bitmonero
 EXPOSE 18080 18081
 
 ENTRYPOINT ["./monerod"]
-CMD ["--restricted-rpc", "--rpc-bind-ip=0.0.0.0", "--confirm-external-bind"]
+CMD ["--non-interactive", "--restricted-rpc", "--rpc-bind-ip=0.0.0.0", "--confirm-external-bind"]
