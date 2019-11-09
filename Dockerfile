@@ -9,14 +9,14 @@ WORKDIR /root
 
 RUN curl https://downloads.getmonero.org/cli/monero-linux-x64-v$MONERO_VERSION.tar.bz2 -O &&\
   echo "$MONERO_SHA256  monero-linux-x64-v$MONERO_VERSION.tar.bz2" | sha256sum -c - &&\
-  tar -xjvf monero-linux-x64-v$MONERO_VERSION.tar.bz2 &&\
+  tar -xzvf monero-linux-x64-v$MONERO_VERSION.tar.bz2 &&\
   rm monero-linux-x64-v$MONERO_VERSION.tar.bz2 &&\
   cp ./monero-x86_64-linux-gnu-v$MONERO_VERSION/monerod . &&\
   rm -r monero-*
   
 FROM ubuntu:18.04
 
-RUN useradd -ms /bin/bash monero
+RUN useradd -ms /bin/bash monero && mkdir -p /home/monero/.bitmonero && chown -R monero:monero /home/monero/.bitmonero
 USER monero
 WORKDIR /home/monero
 
