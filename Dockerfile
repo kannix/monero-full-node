@@ -1,13 +1,14 @@
 # Usage: docker run --restart=always -v /var/data/blockchain-xmr:/root/.bitmonero -p 18080:18080 -p 18081:18081 --name=monerod -td kannix/monero-full-node
 FROM ubuntu:18.04 AS build
 
-ENV MONERO_VERSION=0.16.0.0 MONERO_SHA256=e507943b46e9d7c9ccdb641dcccb9d8205dd9de660a0ab5566dac5423f8b95e2
+ENV MONERO_VERSION=0.16.0.1 MONERO_SHA256=4615b9326b9f57565193f5bfe092c05f7609afdc37c76def81ee7d324cb07f35
+
 
 RUN apt-get update && apt-get install -y curl bzip2
 
 WORKDIR /root
 
-RUN curl https://downloads.getmonero.org/cli/monero-linux-x64-v$MONERO_VERSION.tar.bz2 -O &&\
+RUN curl https://dlsrc.getmonero.org/cli/monero-linux-x64-v$MONERO_VERSION.tar.bz2 -O &&\
   echo "$MONERO_SHA256  monero-linux-x64-v$MONERO_VERSION.tar.bz2" | sha256sum -c - &&\
   tar -xvf monero-linux-x64-v$MONERO_VERSION.tar.bz2 &&\
   rm monero-linux-x64-v$MONERO_VERSION.tar.bz2 &&\
