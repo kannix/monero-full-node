@@ -1,7 +1,7 @@
 # Usage: docker run --restart=always -v /var/data/blockchain-xmr:/root/.bitmonero -p 18080:18080 -p 18081:18081 --name=monerod -td kannix/monero-full-node
 FROM ubuntu:18.04 AS build
 
-ENV MONERO_VERSION=0.17.1.5 MONERO_SHA256=95666508e695637830b4c1700538c717ff97f02f181fbb337a109763372c8d34
+ENV MONERO_VERSION=0.17.1.6 MONERO_SHA256=01bb6e18773a461a4dcfe2a6d4e4f7e1708b26634bc56696d68c539c3a66f81a
 
 
 RUN apt-get update && apt-get install -y curl bzip2
@@ -15,7 +15,7 @@ RUN curl https://dlsrc.getmonero.org/cli/monero-linux-x64-v$MONERO_VERSION.tar.b
   cp ./monero-x86_64-linux-gnu-v$MONERO_VERSION/monerod . &&\
   rm -r monero-*
 
-# get the banlist
+# get the banlist - leaving it one more version, but can really be removed starting from 0.17.1.6
 RUN curl https://gui.xmr.pm/files/block.txt > /root/block.txt
 
   
