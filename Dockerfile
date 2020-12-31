@@ -1,7 +1,7 @@
 # Usage: docker run --restart=always -v /var/data/blockchain-xmr:/root/.bitmonero -p 18080:18080 -p 18081:18081 --name=monerod -td kannix/monero-full-node
 FROM ubuntu:18.04 AS build
 
-ENV MONERO_VERSION=0.17.1.7 MONERO_SHA256=98ce0d22db0d1112114bbad4c9773d1490d30e5c643423c2e5bffc19553207f9
+ENV MONERO_VERSION=0.17.1.8 MONERO_SHA256=b566652c5281970c6137c27dd15002fe6d4c9230bc37d81545b2f36c16e7d476
 
 
 RUN apt-get update && apt-get install -y curl bzip2
@@ -15,8 +15,8 @@ RUN curl https://dlsrc.getmonero.org/cli/monero-linux-x64-v$MONERO_VERSION.tar.b
   cp ./monero-x86_64-linux-gnu-v$MONERO_VERSION/monerod . &&\
   rm -r monero-*
 
-# get the banlist - still desireable to keep it in a while longer.
-RUN curl https://gui.xmr.pm/files/block.txt > /root/block.txt
+# no more required, use --enable-dns-blocklist insted
+#RUN curl https://gui.xmr.pm/files/block.txt > /root/block.txt
 
   
 FROM ubuntu:18.04
@@ -26,7 +26,7 @@ USER monero
 WORKDIR /home/monero
 
 COPY --chown=monero:monero --from=build /root/monerod /home/monero/monerod
-COPY --chown=monero:monero --from=build /root/block.txt /home/monero/block.txt
+#COPY --chown=monero:monero --from=build /root/block.txt /home/monero/block.txt
 
 
 # blockchain location
@@ -36,4 +36,4 @@ EXPOSE 18080 18081
 
 
 ENTRYPOINT ["./monerod"]
-CMD ["--non-interactive", "--restricted-rpc", "--rpc-bind-ip=0.0.0.0", "--confirm-external-bind", "--ban-list=block.txt", "--out-peers=16"]
+CMD ["--non-interactive", "--restricted-rpc", "--rpc-bind-ip=0.0.0.0", "--confirm-external-bind", "--enable-dns-blocklist", "--out-peers=16"]
