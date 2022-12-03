@@ -17,7 +17,7 @@ Then launch using the "how to use" command above
 
 # Donations
 
-If you find this useful and want to contribute, please donate to the [Monero General Fund](https://ccs.getmonero.org/) that supports the continued devleopment of Monero:
+If you find this useful and want to contribute, please donate to the [Monero General Fund](https://ccs.getmonero.org/) that supports the continued development of Monero:
 ```888tNkZrPN6JsEgekjMnABU4TBzc2Dt29EPAvkRxbANsAnjyPbb3iQ1YBRk1UXcdRsiKc9dhwMVgN5S9cQUiyoogDavup3H```
 
 
